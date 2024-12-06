@@ -14,9 +14,11 @@ public class MyString {
         //// Put your other tests here.
         System.out.println("silent -> \"" + spacedString("silent") + "\" (expected: s i l e n t)");
         System.out.println("length 10 -> " + randomStringOfLetters(10));
+        System.out.println("remove###################");
         System.out.println("abc - abc -> " + remove("abc", "abc") + " (expected: )");
-        System.out.println("empty string -> \"" + spacedString("") + "\" (expected: )");
+        //System.out.println("empty string -> \"" + spacedString("") + "\" (expected: )");
         System.out.println("abc - b -> " + remove("abc", "b") + " (expected: ac)");
+        System.out.println("hello - empty string -> " + remove("hello", "") + " (expected: hello)");
 
     }
 
@@ -131,6 +133,9 @@ public class MyString {
     public static String remove(String str1, String str2) {
        String newSub = "";
        int indexForHelp = 0;
+       if (str2.length() == 0){
+        return str1;
+       }
        for (int i = 0; i < str2.length(); i++){
         //System.out.println("char from str2: " + str2.charAt(i));
         indexForHelp = str1.indexOf(str2.charAt(i));
@@ -141,7 +146,10 @@ public class MyString {
         //System.out.println("newsub second= "+ newSub);
         str1 = newSub;
        }
-        return newSub;
+       //System.out.println("final newsub: " + newSub);
+       //System.out.println("final newsublength: " + newSub.length());
+
+       return newSub;
     }
 
     /**
