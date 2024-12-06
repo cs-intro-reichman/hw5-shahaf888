@@ -63,11 +63,11 @@ public class MyString {
                 return false;
             }
             else{
-                System.out.println("char : " + c);
+                //System.out.println("char : " + c);
                 helper = str2.substring(0, indexForHelp);
-                System.out.println("helper1 = " + helper);
+                //System.out.println("helper1 = " + helper);
                 helper = helper + str2.substring(indexForHelp + 1);
-                System.out.println("helper2 = " + str2.substring(indexForHelp + 1));
+                //System.out.println("helper2 = " + str2.substring(indexForHelp + 1));
             }
             str2 = helper;
         }
@@ -132,13 +132,13 @@ public class MyString {
        String newSub = "";
        int indexForHelp = 0;
        for (int i = 0; i < str2.length(); i++){
-        System.out.println("char from str2: " + str2.charAt(i));
+        //System.out.println("char from str2: " + str2.charAt(i));
         indexForHelp = str1.indexOf(str2.charAt(i));
-        System.out.println("index: " + indexForHelp);
+        //System.out.println("index: " + indexForHelp);
         newSub = str1.substring(0,indexForHelp);
-        System.out.println("newsub first= " + newSub);
+        //System.out.println("newsub first= " + newSub);
         newSub = newSub + str1.substring(indexForHelp+1,str1.length());
-        System.out.println("newsub second= "+ newSub);
+        //System.out.println("newsub second= "+ newSub);
         str1 = newSub;
        }
         return newSub;
