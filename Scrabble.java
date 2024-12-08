@@ -62,14 +62,14 @@ public class Scrabble {
 	public static int wordScore(String word) {
 		int score = 0;
 		//System.out.println("input word: " + word);
-		for (int i = 0; i < 5; i++) {
-			System.out.println(DICTIONARY[i]);
-		}
-		System.out.println(word);
-		System.out.println("is the word **" + word + "** in the dictionary: " + isWordInDictionary(word));
+		///for (int i = 0; i < 5; i++) {
+		///	System.out.println(DICTIONARY[i]);
+		///}
+		//System.out.println(word);
+		//System.out.println("is the word **" + word + "** in the dictionary: " + isWordInDictionary(word));
 		///i check before i enter if the input is a subset of the hand
 		if (isWordInDictionary(word)){
-			System.out.println("the word " + word + " in the dictinary!!!!!!!!!!!!");
+			//System.out.println("the word " + word + " in the dictinary!!!!!!!!!!!!");
 			for (int i = 0; i < word.length(); i++){
 				score = score + (SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a']);
 			}
@@ -174,7 +174,7 @@ public class Scrabble {
 		testScrabbleScore();    
 		testCreateHands();  
 		//testPlayHands();
-		playGame();
+		//playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
