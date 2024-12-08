@@ -46,8 +46,24 @@ public class Scrabble {
         System.out.println(NUM_OF_WORDS + " words loaded.");
 	}
 
+	public static void init2() {
+		// Declares the variable in to refer to an object of type In, and initializes it to represent
+		// the stream of characters coming from the given file. Used for reading words from the file.  
+		In in = new In(WORDS_FILE);
+        //System.out.println("Loading word list from file...");
+        NUM_OF_WORDS = 0;
+		while (!in.isEmpty()) {
+			// Reads the next "token" from the file. A token is defined as a string of 
+			// non-whitespace characters. Whitespace is either space characters, or  
+			// end-of-line characters.
+			DICTIONARY[NUM_OF_WORDS++] = in.readString().toLowerCase();
+		}
+        //System.out.println(NUM_OF_WORDS + " words loaded.");
+	}
+
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
+		init2();
 		for (int i = 0; i < DICTIONARY.length; i++){
 			if (word.equals(DICTIONARY[i])){
 				return true;
