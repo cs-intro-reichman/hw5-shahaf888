@@ -61,9 +61,11 @@ public class Scrabble {
 	// If the word includes the sequence "runi", adds 1000 points to the game.
 	public static int wordScore(String word) {
 		int score = 0;
+		//System.out.println("input word: " + word);
+		//System.out.println("is the word **" + word + "** in the dictionary: " + isWordInDictionary(word));
 		///i check before i enter if the input is a subset of the hand
 		if (isWordInDictionary(word)){
-			System.out.println("the word " + word + " in the dictinary");
+			//System.out.println("the word " + word + " in the dictinary");
 			for (int i = 0; i < word.length(); i++){
 				score = score + (SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a']);
 			}
@@ -77,7 +79,7 @@ public class Scrabble {
 
 			
 		}
-		System.out.println("score to return: " + score);
+		//System.out.println("score to return: " + score);
 		return score;
 	}
 
