@@ -63,6 +63,7 @@ public class Scrabble {
 		int score = 0;
 		///i check before i enter if the input is a subset of the hand
 		if (isWordInDictionary(word)){
+			System.out.println("the word " + word + " in the dictinary");
 			for (int i = 0; i < word.length(); i++){
 				score = score + (SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a']);
 			}
@@ -76,6 +77,7 @@ public class Scrabble {
 
 			
 		}
+		System.out.println("score to return: " + score);
 		return score;
 	}
 
@@ -95,7 +97,6 @@ public class Scrabble {
     // 2. The user gets the Scrabble points of the entered word.
     // 3. The user is prompted to enter another word, or '.' to end the hand. 
 	public static void playHand(String hand) {
-		System.out.println("enter playhand");
 		int n = hand.length();
 		int score = 0;
 		// Declares the variable in to refer to an object of type In, and initializes it to represent
@@ -164,7 +165,7 @@ public class Scrabble {
 		testScrabbleScore();    
 		testCreateHands();  
 		//testPlayHands();
-		playGame();
+		//playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
@@ -175,6 +176,10 @@ public class Scrabble {
 		}
 		System.out.println(isWordInDictionary("mango"));
 		System.out.println(isWordInDictionary("friendship"));
+		//not in dictionay
+		System.out.println(isWordInDictionary("running"));
+		System.out.println(isWordInDictionary("a"));
+		//a not in dictionary
 	}
 	
 	public static void testScrabbleScore() {
@@ -182,6 +187,12 @@ public class Scrabble {
 		System.out.println(wordScore("babe"));
 		System.out.println(wordScore("friendship"));
 		System.out.println(wordScore("running"));
+		System.out.println(wordScore("quiz"));
+		System.out.println(wordScore("dog"));
+		System.out.println(wordScore("cat"));
+
+
+
 	}
 	
 	public static void testCreateHands() {
