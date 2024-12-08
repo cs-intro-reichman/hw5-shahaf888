@@ -62,10 +62,14 @@ public class Scrabble {
 	public static int wordScore(String word) {
 		int score = 0;
 		//System.out.println("input word: " + word);
-		//System.out.println("is the word **" + word + "** in the dictionary: " + isWordInDictionary(word));
+		for (int i = 0; i < 5; i++) {
+			System.out.println(DICTIONARY[i]);
+		}
+		System.out.println(word);
+		System.out.println("is the word **" + word + "** in the dictionary: " + isWordInDictionary(word));
 		///i check before i enter if the input is a subset of the hand
 		if (isWordInDictionary(word)){
-			//System.out.println("the word " + word + " in the dictinary");
+			System.out.println("the word " + word + " in the dictinary!!!!!!!!!!!!");
 			for (int i = 0; i < word.length(); i++){
 				score = score + (SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a']);
 			}
@@ -112,20 +116,23 @@ public class Scrabble {
 			// end-of-line characters.
 			String input = in.readString();
 			//// that completes the hand playing loop
-			if (MyString.subsetOf(input, hand)){
-				int newScore = wordScore(input);
-				//System.out.println("new score: " + newScore);
-				score = score + newScore;
-				if (newScore != 0){
-					hand = MyString.remove(hand, input);
+			if (input.length() > 0){
+				if (MyString.subsetOf(input, hand)){
+					int newScore = wordScore(input);
+					//System.out.println("new score: " + newScore);
+					score = score + newScore;
+					if (newScore != 0){
+						hand = MyString.remove(hand, input);
+					}
+					else{
+						System.out.println("No such word in the dictionary. Try again.");
+					}
 				}
-				else{
-					System.out.println("No such word in the dictionary. Try again.");
+				else if (input.equals(".") || input.equals("e")) {
+					break;
 				}
 			}
-			else if (input.equals(".") || input.equals("e")) {
-				break;
-			}
+			
 			in = new In();
 		}
 		if (hand.length() == 0) {
@@ -167,7 +174,7 @@ public class Scrabble {
 		testScrabbleScore();    
 		testCreateHands();  
 		//testPlayHands();
-		//playGame();
+		playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
