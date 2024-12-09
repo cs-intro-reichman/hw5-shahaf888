@@ -136,9 +136,10 @@ public class Scrabble {
 						System.out.println("No such word in the dictionary. Try again.");
 					}
 					else{
-						System.out.println("word score: " + wordScore(input));
+						//System.out.println("word score: " + wordScore(input));
 						int newScore = wordScore(input);
 						score = score + newScore;
+						System.out.println(input + " earned " + newScore + " points. Score: " + score + " points");
 						hand = MyString.remove(hand, input);
 
 					}
@@ -225,8 +226,8 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init();
-		//playHand("ocostrza");
-		//playHand("arbffip");
+		playHand("ocostrza");
+		playHand("arbffip");
 		playHand("aretiin");
 	}
 }
