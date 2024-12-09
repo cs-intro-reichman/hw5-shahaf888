@@ -226,8 +226,8 @@ public class Scrabble {
 	}
 	public static void testPlayHands() {
 		init();
-		playHand("ocostrza");
-		playHand("arbffip");
+		//playHand("ocostrza");
+		//playHand("arbffip");
 		playHand("aretiin");
 	}
 }
