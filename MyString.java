@@ -1,3 +1,5 @@
+
+
 /**
  * A library of string functions.
  */
@@ -8,7 +10,16 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
+        System.out.println("spas in space -> " + subsetOf("spas", "space") + " (expected: true)");
         //// Put your other tests here.
+        System.out.println("silent -> \"" + spacedString("silent") + "\" (expected: s i l e n t)");
+        System.out.println("length 10 -> " + randomStringOfLetters(10));
+        System.out.println("remove###################");
+        System.out.println("abc - abc -> " + remove("abc", "abc") + " (expected: )");
+        //System.out.println("empty string -> \"" + spacedString("") + "\" (expected: )");
+        System.out.println("abc - b -> " + remove("abc", "b") + " (expected: ac)");
+        System.out.println("hello - empty string -> " + remove("hello", "") + " (expected: hello)");
+
     }
 
     /**
@@ -20,8 +31,14 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        int counter = 0;
+        for (int i = 0; i < str.length(); i++){
+            if (str.charAt(i) == ch){
+                counter++;
+            }
+        }
+
+        return counter;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -36,8 +53,28 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
-        return false;
+        String helper = "";
+        if (str1.length() > str2.length()){
+            return false;
+        }
+        int indexForHelp = 0;
+        for(int i = 0; i < str1.length(); i++){
+            char c = str1.charAt(i);
+            indexForHelp = str2.indexOf(c);
+            if (indexForHelp == -1){
+                return false;
+            }
+            else{
+                //System.out.println("char : " + c);
+                helper = str2.substring(0, indexForHelp);
+                //System.out.println("helper1 = " + helper);
+                helper = helper + str2.substring(indexForHelp + 1);
+                //System.out.println("helper2 = " + str2.substring(indexForHelp + 1));
+            }
+            str2 = helper;
+        }
+        
+        return true;
     }
 
     /** Returns a string which is the same as the given string, with a space
@@ -49,8 +86,18 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        String helper = "";
+        for (int i = 0; i < str.length(); i++){
+            if (i != str.length()-1){
+                helper = helper + str.charAt(i);
+                helper = helper + " ";
+            }
+            else{
+                helper = helper + str.charAt(i);
+            }
+
+        }
+        return helper;
     }
   
     /**
@@ -64,8 +111,14 @@ public class MyString {
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+        String newStr = "";
+
+        for (int i = 0; i < n; i++){
+            int randomNum = (int) (Math.random() * 26);
+            char c = (char) ('a' + randomNum);
+            newStr = newStr + c;
+        }
+        return newStr;
     }
 
     /**
@@ -78,8 +131,25 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+       String newSub = "";
+       int indexForHelp = 0;
+       if (str2.length() == 0){
+        return str1;
+       }
+       for (int i = 0; i < str2.length(); i++){
+        //System.out.println("char from str2: " + str2.charAt(i));
+        indexForHelp = str1.indexOf(str2.charAt(i));
+        //System.out.println("index: " + indexForHelp);
+        newSub = str1.substring(0,indexForHelp);
+        //System.out.println("newsub first= " + newSub);
+        newSub = newSub + str1.substring(indexForHelp+1,str1.length());
+        //System.out.println("newsub second= "+ newSub);
+        str1 = newSub;
+       }
+       //System.out.println("final newsub: " + newSub);
+       //System.out.println("final newsublength: " + newSub.length());
+
+       return newSub;
     }
 
     /**
