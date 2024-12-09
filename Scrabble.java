@@ -63,7 +63,7 @@ public class Scrabble {
 
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
-		//init2();
+		init2();
 		for (int i = 0; i < DICTIONARY.length; i++){
 			if (word.equals(DICTIONARY[i])){
 				return true;
@@ -188,8 +188,8 @@ public class Scrabble {
 		testBuildingTheDictionary();  
 		testScrabbleScore();    
 		testCreateHands();  
-		//testPlayHands();
-		playGame();
+		testPlayHands();
+		//playGame();
 	}
 
 	public static void testBuildingTheDictionary() {
