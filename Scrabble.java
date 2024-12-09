@@ -63,7 +63,6 @@ public class Scrabble {
 
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
-		init2();
 		for (int i = 0; i < DICTIONARY.length; i++){
 			if (word.equals(DICTIONARY[i])){
 				return true;
@@ -84,20 +83,16 @@ public class Scrabble {
 		//System.out.println(word);
 		//System.out.println("is the word **" + word + "** in the dictionary: " + isWordInDictionary(word));
 		///i check before i enter if the input is a subset of the hand
-		if (isWordInDictionary(word)){
 			//System.out.println("the word " + word + " in the dictinary!!!!!!!!!!!!");
-			for (int i = 0; i < word.length(); i++){
-				score = score + (SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a']);
+		for (int i = 0; i < word.length(); i++){
+			score = score + (SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a']);
 			}
-			score = score * word.length();
-			if (word.length() == HAND_SIZE){
-				score = score + 50;
-			}
-			if (MyString.subsetOf("runi", word)){
-				score = score + 1000;
-			}
-
-			
+		score = score * word.length();
+		if (word.length() == HAND_SIZE){
+			score = score + 50;
+		}
+		if (MyString.subsetOf("runi", word)){
+			score = score + 1000;
 		}
 		//System.out.println("score to return: " + score);
 		return score;
@@ -132,20 +127,24 @@ public class Scrabble {
 			// end-of-line characters.
 			String input = in.readString();
 			//// that completes the hand playing loop
-			if (input.length() > 0){
+			if (input.equals(".")){
+				break;
+			}
+			if (input.length() != 0){
 				if (MyString.subsetOf(input, hand)){
-					int newScore = wordScore(input);
-					//System.out.println("new score: " + newScore);
-					score = score + newScore;
-					if (newScore != 0){
-						hand = MyString.remove(hand, input);
-					}
-					else{
+					if(!isWordInDictionary(input)){
 						System.out.println("No such word in the dictionary. Try again.");
 					}
+					else{
+						System.out.println("word score: " + wordScore(input));
+						int newScore = wordScore(input);
+						score = score + newScore;
+						hand = MyString.remove(hand, input);
+
+					}
 				}
-				else if (input.equals(".") || input.equals("e")) {
-					break;
+				else{
+					System.out.println("No such word in the dictionary. Try again.");
 				}
 			}
 			
