@@ -46,20 +46,6 @@ public class Scrabble {
         System.out.println(NUM_OF_WORDS + " words loaded.");
 	}
 
-	public static void init2() {
-		// Declares the variable in to refer to an object of type In, and initializes it to represent
-		// the stream of characters coming from the given file. Used for reading words from the file.  
-		In in = new In(WORDS_FILE);
-        //System.out.println("Loading word list from file...");
-        NUM_OF_WORDS = 0;
-		while (!in.isEmpty()) {
-			// Reads the next "token" from the file. A token is defined as a string of 
-			// non-whitespace characters. Whitespace is either space characters, or  
-			// end-of-line characters.
-			DICTIONARY[NUM_OF_WORDS++] = in.readString().toLowerCase();
-		}
-        //System.out.println(NUM_OF_WORDS + " words loaded.");
-	}
 
 	// Checks if the given word is in the dictionary.
 	public static boolean isWordInDictionary(String word) {
@@ -76,14 +62,6 @@ public class Scrabble {
 	// If the word includes the sequence "runi", adds 1000 points to the game.
 	public static int wordScore(String word) {
 		int score = 0;
-		//System.out.println("input word: " + word);
-		///for (int i = 0; i < 5; i++) {
-		///	System.out.println(DICTIONARY[i]);
-		///}
-		//System.out.println(word);
-		//System.out.println("is the word **" + word + "** in the dictionary: " + isWordInDictionary(word));
-		///i check before i enter if the input is a subset of the hand
-			//System.out.println("the word " + word + " in the dictinary!!!!!!!!!!!!");
 		for (int i = 0; i < word.length(); i++){
 			score = score + (SCRABBLE_LETTER_VALUES[word.charAt(i) - 'a']);
 			}
@@ -94,7 +72,6 @@ public class Scrabble {
 		if (MyString.subsetOf("runi", word)){
 			score = score + 1000;
 		}
-		//System.out.println("score to return: " + score);
 		return score;
 	}
 
@@ -136,7 +113,6 @@ public class Scrabble {
 						System.out.println("No such word in the dictionary. Try again.");
 					}
 					else{
-						//System.out.println("word score: " + wordScore(input));
 						int newScore = wordScore(input);
 						score = score + newScore;
 						System.out.println(input + " earned " + newScore + " points. Score: " + score + " points");
@@ -145,7 +121,7 @@ public class Scrabble {
 					}
 				}
 				else{
-					System.out.println("No such word in the dictionary. Try again.");
+					System.out.println("Invalid word. Try again.");
 				}
 			}
 			
